@@ -25,6 +25,10 @@ namespace Mancala_AI
         public MainPage()
         {
             this.InitializeComponent();
+            Game game = new Game();
+            int boxes = 0;      //get number of boxes from input
+            Game.Mode mode = Game.Mode.aiVAiSlow;       //get mode from input
+            game.mainLoop(boxes, mode);
         }
     }
 }

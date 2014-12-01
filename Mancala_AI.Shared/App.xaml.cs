@@ -103,58 +103,6 @@ namespace Mancala_AI
 
             // Ensure the current window is active
             Window.Current.Activate();
-
-            //get number of boxes
-            int i = 0;
-            //Begin game loop
-            mainLoop(i, getMode());
-        }
-
-        enum Mode { aiVAiSlow, aiVAiFast, aiVHuman };   //mainly for readability
-
-        public Mode getMode()
-        {
-            //get mode from input
-            return 0;
-        }
-
-        public void mainLoop(int boxes, Mode mode)
-        {
-            Board board = new Board(boxes);
-            bool gameOver = false;
-            Player player1 = new Player(false);
-            Player player2;
-            if (mode == Mode.aiVHuman)
-            {
-                player2 = new Player(true);
-            }
-            else        //no human players
-            {
-                player2 = new Player(false);
-            }
-            Player[] players = { player1, player2 };
-            int action;     //references the box to redistribute
-            int turn = 1;
-            while (!gameOver)
-            {
-                if (players[turn].getIsHuman())
-                {
-                    action = 0;     //get input as action
-                }
-                else
-                {
-                    action = players[turn].doTurn(board);
-                }
-                board.update(action);
-                if (board.getHasWinner())
-                {
-                    //do coolio winner stuff
-                    gameOver = true;
-                }
-
-                turn = turn % 2;        //do not let turn go past 2
-                turn++;
-            }
         }
 
 #if WINDOWS_PHONE_APP
